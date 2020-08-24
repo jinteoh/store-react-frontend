@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
-import LoginUser from '../strapi/LoginUser'
-import RegisterUser from '../strapi/RegisterUser'
+import loginUser from '../strapi/loginUser'
+import RegisterUser from '../strapi/registerUser'
 import { UserContext } from '../contexts/UserContext'
 
 // strapi function
@@ -32,7 +32,7 @@ const Login = () => {
     e.preventDefault();
     let response;
     if (isMember) {
-      response = await LoginUser({ email, password })
+      response = await loginUser({ email, password })
     } else {
       response = await RegisterUser({ email, password, username })
     }

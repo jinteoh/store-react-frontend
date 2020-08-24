@@ -6,7 +6,7 @@ import EmptyCart from '../components/Cart/EmptyCart';
 
 // react-stripe-elements
 import { CardElement, StripeProvider, Elements, injectStripe, FpxBankElement } from 'react-stripe-elements'
-import SubmitOrder from '../strapi/SubmitOrder'
+import submitOrder from '../strapi/submitOrder'
 
 function Checkout(props) {
 
@@ -31,7 +31,7 @@ function Checkout(props) {
     if (token) {
       setError('');
       const { id } = token;
-      let order = await SubmitOrder({
+      let order = await submitOrder({
         name,
         total,
         items: cart,

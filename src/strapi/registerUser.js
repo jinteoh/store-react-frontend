@@ -1,7 +1,7 @@
 import axios from 'axios'
 import url from '../utils/URL'
 
-async function registerUser({ email, password, username }) {
+async function RegisterUser({ email, password, username }) {
     const response = await axios.post(`${url}/auth/local/register`, {
         username,
         email,
@@ -10,4 +10,4 @@ async function registerUser({ email, password, username }) {
     return response
 }
 
-export default registerUser
+export default RegisterUser
