@@ -1,6 +1,4 @@
 import React, { useState, createContext, useEffect } from 'react'
-import { v4 } from 'uuid'
-import RandomWords from 'random-words'
 import axios from 'axios'
 import url from '../utils/URL'
 import { featuredProducts, flattenProducts } from '../utils/helpers'

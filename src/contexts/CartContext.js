@@ -1,5 +1,5 @@
 import React, { useState, createContext, useEffect } from 'react'
-import LocalCart from '../utils/localCart'
+// import LocalCart from '../utils/localCart'
 
 function getCartFromLocalStorage() {
     return localStorage.getItem("cart")
