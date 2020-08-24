@@ -549,7 +549,7 @@ Login Form
 }
 
 .form-control label {
-  display: block;
+  display: block !important;
 }
 
 .form-control input {
