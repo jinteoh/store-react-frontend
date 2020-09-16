@@ -6,10 +6,8 @@ export function flattenProducts(data) {
         // cloudinary
         // let image = item.image.url;
         // local
-        let image = `${url}${item.image[0].url}`;
+        let image = (item.image && `${item.image.url}`) || null;
         return { ...item, image };
-
-
     })
 }
 
@@ -17,4 +15,20 @@ export function flattenProducts(data) {
 // helper functions
 export function featuredProducts(data) {
     return data.filter(item => item.featured === true)
+}
+
+// paginate 
+export function paginate(products) {
+    const itemsPerPage = 4;
+    const numberOfPages = Math.ceil(products.length / itemsPerPage);
+    // const newProducts = Array.from({ length: numberOfPages }, () => {
+    //     return products.splice(0, itemsPerPage);
+    // });
+
+    const newProducts = Array.from({ length: numberOfPages }, (_, index) => {
+        const start = index * itemsPerPage
+        return products.slice(start, start + itemsPerPage);
+    })
+
+    return newProducts;
 }

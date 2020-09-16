@@ -1,7 +1,7 @@
 import axios from 'axios'
 import url from '../utils/URL'
 
-async function submitOrder({ name, total, items, stripeTokenId, userToken }) {
+async function submitFPXOrder({ name, total, items, stripeTokenId, userToken }) {
     const response = await axios.post(`${url}/orders`, {
         name,
         total,
@@ -17,5 +17,5 @@ async function submitOrder({ name, total, items, stripeTokenId, userToken }) {
     return response;
 }
 
-export default submitOrder;
+export default submitFPXOrder;
 

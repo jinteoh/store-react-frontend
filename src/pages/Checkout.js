@@ -8,6 +8,7 @@ import EmptyCart from '../components/Cart/EmptyCart';
 import { CardElement, StripeProvider, Elements, injectStripe, FpxBankElement } from 'react-stripe-elements'
 import submitOrder from '../strapi/submitOrder'
 
+
 function Checkout(props) {
 
 
@@ -39,6 +40,8 @@ function Checkout(props) {
         userToken: user.token
       })
 
+      console.log(order);
+
       if (order) {
         showAlert({ message: 'your order is complete' });
         clearCart();
@@ -51,6 +54,10 @@ function Checkout(props) {
       hideAlert();
       setError(response.error.message);
     }
+  }
+
+  async function handleFPXSubmit(e) {
+    e.preventDefault();
   }
 
   if (cart.length < 1) return <EmptyCart />
@@ -84,16 +91,22 @@ function Checkout(props) {
         </div>
         <CardElement className="card-element"></CardElement>
         <br />
-        <FpxBankElement accountHolderType="individual" className="card-element" />
+
+
+
         {error && <p className="form-empty">{error}</p>}
         {
           isEmpty
             ? <p className="form-empty">please fill out name field</p>
-            : <button type="submit" onClick={handleSubmit} className="btn btn-primary btn-block">
+            : <button type="submit" data-secret="<%= @intent.client_secret %>" onClick={handleSubmit} className="btn btn-primary btn-block">
               submit
               </button>
         }
       </form>
+
+      {/* fpx  */}
+
+      {/* end of fpx */}
     </section>
   )
 }
